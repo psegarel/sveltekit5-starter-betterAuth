@@ -7,8 +7,11 @@
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { authClient } from '$lib/auth/client';
+	import IconEye from './IconEye.svelte';
 
 	let { data }: { data: SuperValidated<Infer<SignupSchema>> } = $props();
+	let showPassword = $state(false);
+	let showConfirmPassword = $state(false);
 	const form = superForm(data, {
 		validators: zodClient(signupSchema)
 	});
@@ -58,7 +61,20 @@
 				<Form.Control>
 					{#snippet children({ props })}
 						<Form.Label>Password</Form.Label>
-						<Input type="password" {...props} bind:value={$formData.password} />
+						<div class="relative">
+							<Input
+								type={showPassword ? 'text' : 'password'}
+								{...props}
+								bind:value={$formData.password}
+							/>
+							<button
+								type="button"
+								onclick={() => (showPassword = !showPassword)}
+								class="absolute inset-y-0 right-0 flex items-center pr-3"
+							>
+								<IconEye show={showPassword} />
+							</button>
+						</div>
 					{/snippet}
 				</Form.Control>
 				<Form.FieldErrors />
@@ -67,7 +83,20 @@
 				<Form.Control>
 					{#snippet children({ props })}
 						<Form.Label>Confirm Password</Form.Label>
-						<Input type="password" {...props} bind:value={$formData.confirmPassword} />
+						<div class="relative">
+							<Input
+								type={showConfirmPassword ? 'text' : 'password'}
+								{...props}
+								bind:value={$formData.confirmPassword}
+							/>
+							<button
+								type="button"
+								onclick={() => (showConfirmPassword = !showConfirmPassword)}
+								class="absolute inset-y-0 right-0 flex items-center pr-3"
+							>
+								<IconEye show={showConfirmPassword} />
+							</button>
+						</div>
 					{/snippet}
 				</Form.Control>
 				<Form.FieldErrors />
