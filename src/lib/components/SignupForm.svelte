@@ -63,14 +63,16 @@
 						<Form.Label>Password</Form.Label>
 						<div class="relative">
 							<Input
+								autocomplete="on"
 								type={showPassword ? 'text' : 'password'}
 								{...props}
 								bind:value={$formData.password}
 							/>
 							<button
 								type="button"
+								tabindex="-1"
 								onclick={() => (showPassword = !showPassword)}
-								class="absolute inset-y-0 right-0 flex items-center pr-3"
+								class=" absolute inset-y-0 right-0 flex items-center pr-3"
 							>
 								<IconEye show={showPassword} />
 							</button>
@@ -85,14 +87,16 @@
 						<Form.Label>Confirm Password</Form.Label>
 						<div class="relative">
 							<Input
+								autocomplete="on"
 								type={showConfirmPassword ? 'text' : 'password'}
 								{...props}
 								bind:value={$formData.confirmPassword}
 							/>
 							<button
 								type="button"
+								tabindex="-1"
 								onclick={() => (showConfirmPassword = !showConfirmPassword)}
-								class="absolute inset-y-0 right-0 flex items-center pr-3"
+								class=" absolute inset-y-0 right-0 flex items-center pr-3"
 							>
 								<IconEye show={showConfirmPassword} />
 							</button>
