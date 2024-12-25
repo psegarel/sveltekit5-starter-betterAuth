@@ -7,23 +7,28 @@
 		navMain: [
 			{
 				title: 'Home',
-				url: '/'
+				url: '/',
+				isActive: true
 			},
 			{
 				title: 'Account',
 				url: '/login',
+				isActive: false,
 				items: [
 					{
 						title: 'Log In',
-						url: '/login'
+						url: '/login',
+						isActive: false
 					},
 					{
 						title: 'Sign Up',
-						url: '/signup'
+						url: '/signup',
+						isActive: false
 					},
 					{
 						title: 'Forgot Password',
-						url: '/forgot-password'
+						url: '/forgot-password',
+						isActive: false
 					}
 				]
 			}
