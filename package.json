@@ -35,6 +35,7 @@
 	},
 	"dependencies": {
 		"@prisma/client": "6.1.0",
+		"@prisma/extension-accelerate": "^1.2.1",
 		"better-auth": "^1.1.3"
 	}
 }
