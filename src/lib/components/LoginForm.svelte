@@ -10,6 +10,7 @@
 	import IconEye from './IconEye.svelte';
 	import PasswordInput from './PasswordInput.svelte';
 	import IconMail from './IconMail.svelte';
+	import { goto } from '$app/navigation';
 
 	let { data }: { data: SuperValidated<Infer<AuthSchema>> } = $props();
 	let showPassword = $state(false);
@@ -26,7 +27,9 @@
 				email: $formData.email,
 				password: $formData.password
 			});
-			console.log(data);
+			if (data) {
+				goto('/');
+			}
 		} catch (error) {
 			console.error(error);
 		}
