@@ -1,5 +1,6 @@
 <script lang="ts">
-	import LoginPage from '$lib/components/login-page.svelte';
 </script>
 
-<LoginPage />
+<div class="flex h-screen w-screen items-center justify-center px-4">
+	<h1>Login</h1>
+</div>
