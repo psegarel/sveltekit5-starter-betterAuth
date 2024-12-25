@@ -28,7 +28,7 @@
 		</div>
 		<div class="mt-4 text-center text-sm">
 			Don't have an account?
-			<a href="##" class="underline"> Sign up </a>
+			<a href="/signup" class="underline"> Sign up </a>
 		</div>
 	</Card.Content>
 </Card.Root>

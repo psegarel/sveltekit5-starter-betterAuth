@@ -1,10 +1,12 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form/index.js';
+	import * as Card from '$lib/components/ui/card/index.js';
 
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { signupSchema, type SignupSchema } from '$lib/auth/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { authClient } from '$lib/auth/client';
 
 	let { data }: { data: SuperValidated<Infer<SignupSchema>> } = $props();
 	const form = superForm(data, {
@@ -12,44 +14,71 @@
 	});
 
 	const { form: formData, enhance } = form;
+
+	async function signup() {
+		try {
+			const { data } = await authClient.signUp.email({
+				email: $formData.email,
+				password: $formData.password,
+				name: $formData.name
+			});
+			console.log(data);
+		} catch (error) {
+			console.error(error);
+		}
+	}
 </script>
 
-<form method="POST" use:enhance>
-	<Form.Field {form} name="username">
-		<Form.Control>
-			{#snippet children({ props })}
-				<Form.Label>Username</Form.Label>
-				<Input {...props} bind:value={$formData.username} />
-			{/snippet}
-		</Form.Control>
-		<Form.FieldErrors />
-	</Form.Field>
-	<Form.Field {form} name="email">
-		<Form.Control>
-			{#snippet children({ props })}
-				<Form.Label>Email</Form.Label>
-				<Input {...props} bind:value={$formData.email} />
-			{/snippet}
-		</Form.Control>
-		<Form.FieldErrors />
-	</Form.Field>
-	<Form.Field {form} name="password">
-		<Form.Control>
-			{#snippet children({ props })}
-				<Form.Label>Password</Form.Label>
-				<Input type="password" {...props} bind:value={$formData.password} />
-			{/snippet}
-		</Form.Control>
-		<Form.FieldErrors />
-	</Form.Field>
-	<Form.Field {form} name="confirmPassword">
-		<Form.Control>
-			{#snippet children({ props })}
-				<Form.Label>Confirm Password</Form.Label>
-				<Input type="password" {...props} bind:value={$formData.confirmPassword} />
-			{/snippet}
-		</Form.Control>
-		<Form.FieldErrors />
-	</Form.Field>
-	<Form.Button>Submit</Form.Button>
-</form>
+<Card.Root class="mx-auto max-w-sm">
+	<Card.Header>
+		<Card.Title class="text-2xl">Sign Up</Card.Title>
+		<Card.Description>Enter your details below to create your account</Card.Description>
+	</Card.Header>
+	<Card.Content>
+		<form method="POST" use:enhance>
+			<Form.Field {form} name="name">
+				<Form.Control>
+					{#snippet children({ props })}
+						<Form.Label>Name</Form.Label>
+						<Input {...props} bind:value={$formData.name} />
+					{/snippet}
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+			<Form.Field {form} name="email">
+				<Form.Control>
+					{#snippet children({ props })}
+						<Form.Label>Email</Form.Label>
+						<Input {...props} bind:value={$formData.email} />
+					{/snippet}
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+			<Form.Field {form} name="password">
+				<Form.Control>
+					{#snippet children({ props })}
+						<Form.Label>Password</Form.Label>
+						<Input type="password" {...props} bind:value={$formData.password} />
+					{/snippet}
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+			<Form.Field {form} name="confirmPassword">
+				<Form.Control>
+					{#snippet children({ props })}
+						<Form.Label>Confirm Password</Form.Label>
+						<Input type="password" {...props} bind:value={$formData.confirmPassword} />
+					{/snippet}
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+			<div class="mt-8 flex flex-row items-center justify-between">
+				<Form.Button onclick={signup}>Submit</Form.Button>
+				<div class="text-center text-xs">
+					Already have an account?
+					<a href="/login" class="underline"> <span class="text-sm font-bold">Log In</span> </a>
+				</div>
+			</div>
+		</form>
+	</Card.Content>
+</Card.Root>
