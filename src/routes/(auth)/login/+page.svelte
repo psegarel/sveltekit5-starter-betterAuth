@@ -1,6 +1,11 @@
 <script lang="ts">
 	import LoginForm from '$lib/components/LoginForm.svelte';
 	import { type PageData } from './$types';
+	import { navbarState } from '$lib/states/index.svelte';
+
+	$effect.pre(() => {
+		navbarState.visible = false;
+	});
 
 	let { data }: { data: PageData } = $props();
 </script>
