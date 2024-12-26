@@ -128,7 +128,10 @@
 				<Form.FieldErrors />
 			</Form.Field>
 			<div class="mt-8 flex flex-row items-center justify-between">
-				<Form.Button onclick={signup}>Submit</Form.Button>
+				<Form.Button
+					class="transition-all duration-300 active:scale-95 active:bg-zinc-500"
+					onclick={signup}>Submit</Form.Button
+				>
 				<div class="text-center text-xs">
 					Already have an account?
 					<a href="/login" class="underline"> <span class="text-sm font-bold">Log In</span> </a>

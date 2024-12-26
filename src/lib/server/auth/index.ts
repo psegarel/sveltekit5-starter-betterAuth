@@ -15,6 +15,15 @@ export const auth = betterAuth({
 			});
 		}
 	},
+	emailVerification: {
+		sendVerificationEmail: async ({ user, url, token }, request) => {
+			await sendMail({
+				to: user.email,
+				subject: 'Verify your email address',
+				html: `<h1>Welcome to ${APP_NAME}</h1><p>Click the link to verify your email: ${url}</p>`
+			});
+		}
+	},
 	database: prismaAdapter(prisma, {
 		provider: 'postgresql'
 	})

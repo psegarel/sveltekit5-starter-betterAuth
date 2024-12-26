@@ -24,7 +24,9 @@
 				email: $formData.email,
 				redirectTo: '/reset-password'
 			});
-			toast('Please check your email for a link to reset your password.');
+			if (data) {
+				toast('Please check your email for a link to reset your password.');
+			}
 		} catch (error) {
 			console.error(error);
 		}
