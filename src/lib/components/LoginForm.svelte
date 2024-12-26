@@ -8,7 +8,6 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { authClient } from '$lib/auth/client';
 	import IconEye from './IconEye.svelte';
-	import PasswordInput from './PasswordInput.svelte';
 	import IconMail from './IconMail.svelte';
 	import { goto } from '$app/navigation';
 

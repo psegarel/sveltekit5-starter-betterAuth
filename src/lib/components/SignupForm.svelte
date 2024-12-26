@@ -8,10 +8,11 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { authClient } from '$lib/auth/client';
 	import IconEye from './IconEye.svelte';
+	import IconMail from './IconMail.svelte';
 
 	let { data }: { data: SuperValidated<Infer<SignupSchema>> } = $props();
 	let showPassword = $state(false);
-	let showConfirmPassword = $state(false);
+
 	const form = superForm(data, {
 		validators: zodClient(signupSchema)
 	});
@@ -32,7 +33,7 @@
 	}
 </script>
 
-<Card.Root class="mx-auto max-w-sm">
+<Card.Root class="mx-auto w-full border-none shadow-none">
 	<Card.Header>
 		<Card.Title class="text-2xl">Sign Up</Card.Title>
 		<Card.Description>Enter your details below to create your account</Card.Description>
@@ -48,15 +49,30 @@
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>
+
 			<Form.Field {form} name="email">
 				<Form.Control>
 					{#snippet children({ props })}
 						<Form.Label>Email</Form.Label>
-						<Input {...props} bind:value={$formData.email} />
+						<div class="relative">
+							<Input
+								placeholder="name@example.com"
+								class="pl-10"
+								{...props}
+								bind:value={$formData.email}
+							/>
+							<span
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
+							>
+								<span class="relative left-1 ml-0.5"
+									><IconMail className="size-5 text-zinc-500" /></span
+								>
+							</span>
+						</div>
 					{/snippet}
 				</Form.Control>
-				<Form.FieldErrors />
 			</Form.Field>
+
 			<Form.Field {form} name="password">
 				<Form.Control>
 					{#snippet children({ props })}
@@ -64,6 +80,7 @@
 						<div class="relative">
 							<Input
 								autocomplete="on"
+								class="pl-10"
 								type={showPassword ? 'text' : 'password'}
 								{...props}
 								bind:value={$formData.password}
@@ -72,9 +89,11 @@
 								type="button"
 								tabindex="-1"
 								onclick={() => (showPassword = !showPassword)}
-								class=" absolute inset-y-0 right-0 flex items-center pr-3"
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
 							>
-								<IconEye show={showPassword} />
+								<span class="relative left-1 ml-0.5"
+									><IconEye className="size-5 text-zinc-500" show={showPassword} /></span
+								>
 							</button>
 						</div>
 					{/snippet}
@@ -88,17 +107,20 @@
 						<div class="relative">
 							<Input
 								autocomplete="on"
-								type={showConfirmPassword ? 'text' : 'password'}
+								class="pl-10"
+								type={showPassword ? 'text' : 'password'}
 								{...props}
 								bind:value={$formData.confirmPassword}
 							/>
 							<button
 								type="button"
 								tabindex="-1"
-								onclick={() => (showConfirmPassword = !showConfirmPassword)}
-								class=" absolute inset-y-0 right-0 flex items-center pr-3"
+								onclick={() => (showPassword = !showPassword)}
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
 							>
-								<IconEye show={showConfirmPassword} />
+								<span class="relative left-1 ml-0.5"
+									><IconEye className="size-5 text-zinc-500" show={showPassword} /></span
+								>
 							</button>
 						</div>
 					{/snippet}
