@@ -27,3 +27,18 @@ SvelteKit 5 with TailwindCSS, Prisma, Shadcn/UI and Better-Auth
 ```
    BETTER_AUTH_URL=http://localhost:5173 #Base URL of your app
 ```
+
+## Email
+
+I'm using Brevo for the email service, at the time of writing, the free plan allows to send 300 emails per day.
+You may need to change the sendMail function in the src/lib/server/email/index.ts file to use another email service.
+
+1. Add your email credentials to the .env file
+
+```
+VITE_SMTP_HOST=
+VITE_SMTP_PORT=
+VITE_SMTP_USER=
+VITE_SMTP_KEY=
+VITE_SMTP_FROM_EMAIL=
+```
