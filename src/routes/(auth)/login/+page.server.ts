@@ -8,10 +8,3 @@ export const load = (async () => {
 		form: await superValidate(zod(authSchema))
 	};
 }) satisfies PageServerLoad;
-
-export const actions = {
-	default: async ({ request }) => {
-		// Nothing happens here, signup is handled on by better-auth authClient.signUp.email()
-		// Since we're using a form, the action is needed to avoid a Method Not Allowed 405 error.
-	}
-};

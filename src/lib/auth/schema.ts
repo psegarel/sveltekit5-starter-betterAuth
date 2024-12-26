@@ -1,5 +1,9 @@
 import { z } from 'zod';
 
+export const forgotPasswordSchema = z.object({
+	email: z.string().email()
+});
+
 export const signupSchema = z
 	.object({
 		email: z.string().email(),
@@ -35,3 +39,4 @@ export const authSchema = z
 
 export type SignupSchema = typeof signupSchema;
 export type AuthSchema = typeof authSchema;
+export type ForgotPasswordSchema = typeof forgotPasswordSchema;

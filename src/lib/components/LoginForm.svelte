@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
-
 	import { Input } from '$lib/components/ui/input/index.js';
+
 	import { authSchema, type AuthSchema } from '$lib/auth/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
@@ -93,7 +93,11 @@
 			</Form.Field>
 			<div class="mt-8 flex flex-row items-center justify-between">
 				<div class="flex flex-row items-center justify-center gap-8">
-					<Form.Button onclick={login}>Log In</Form.Button>
+					<Form.Button
+						type="button"
+						class="transition-all duration-300 active:scale-95 active:bg-zinc-500"
+						onclick={login}>Log In</Form.Button
+					>
 					<a href="/forgot-password" class="text-sm underline">Forgot Password</a>
 				</div>
 

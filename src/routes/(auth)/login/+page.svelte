@@ -1,8 +1,5 @@
 <script lang="ts">
 	import LoginForm from '$lib/components/LoginForm.svelte';
-	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { authSchema, type AuthSchema } from '$lib/auth/schema';
 	import { type PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
