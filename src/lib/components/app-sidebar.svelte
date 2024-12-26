@@ -24,11 +24,6 @@
 						title: 'Sign Up',
 						url: '/signup',
 						isActive: false
-					},
-					{
-						title: 'Forgot Password',
-						url: '/forgot-password',
-						isActive: false
 					}
 				]
 			}

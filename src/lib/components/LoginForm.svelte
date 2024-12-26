@@ -92,8 +92,12 @@
 				<Form.FieldErrors />
 			</Form.Field>
 			<div class="mt-8 flex flex-row items-center justify-between">
-				<Form.Button onclick={login}>Log In</Form.Button>
-				<div class="flex flex-row items-center justify-center gap-4 text-center">
+				<div class="flex flex-row items-center justify-center gap-8">
+					<Form.Button onclick={login}>Log In</Form.Button>
+					<a href="/forgot-password" class="text-sm underline">Forgot Password</a>
+				</div>
+
+				<div class="flex flex-row items-center justify-center gap-4 text-center text-sm">
 					<span>Don't have an account?</span>
 					<a href="/signup" class="underline"> <span class="font-semibold">Sign Up</span> </a>
 				</div>
