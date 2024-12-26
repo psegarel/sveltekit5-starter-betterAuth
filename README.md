@@ -1,6 +1,6 @@
 # Starter Template
 
-SvelteKit with TailwindCSS, Prisma, Shadcn/UI and Better-Auth
+SvelteKit 5 with TailwindCSS, Prisma, Shadcn/UI and Better-Auth
 
 ## Setup
 
@@ -17,6 +17,13 @@ SvelteKit with TailwindCSS, Prisma, Shadcn/UI and Better-Auth
 ## Authentication
 
 1. Generate a secret key for the auth & add it to the .env file
+
+```
    BETTER_AUTH_SECRET=
+```
+
 2. Add your base url to the .env file
+
+```
    BETTER_AUTH_URL=http://localhost:5173 #Base URL of your app
+```
