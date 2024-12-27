@@ -1,6 +1,9 @@
 # Starter Template
 
-SvelteKit 5 with TailwindCSS, Prisma, Shadcn/UI and Better-Auth
+SvelteKit 5 with TailwindCSS, Prisma, Shadcn/UI and Better-Auth.
+
+Trying not to repeat myself, that's why I came up with this template with the idea of adding most of the features I use in my projects.
+From Authentication to SEO ( not there yet), mail functionality, dark mode, etc.
 
 ## Setup
 
@@ -42,3 +45,7 @@ VITE_SMTP_USER=
 VITE_SMTP_KEY=
 VITE_SMTP_FROM_EMAIL=
 ```
+
+## Mode Watcher
+
+1. Added the ModeWatcher component to the src/routes/+layout.svelte file, to enable the dark mode.
