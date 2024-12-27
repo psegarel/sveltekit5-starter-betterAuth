@@ -18,9 +18,9 @@
 {#if navbarState.visible}
 	<div
 		transition:fly={{ y: -100, duration: 600, delay: 600, easing: cubicOut, opacity: 1 }}
-		class="fixed left-0 top-0 z-50 flex h-16 w-screen flex-row items-center justify-between bg-zinc-200 px-4 md:px-16"
+		class="fixed z-50 flex h-16 w-screen flex-row items-center justify-between px-4 md:px-16"
 	>
-		<div class="flex flex-row items-center justify-center gap-4 text-sm">
+		<div class="flex w-1/2 flex-row items-center justify-start gap-4 text-sm">
 			<a class="text-xl font-semibold tracking-tight" href="/">Starter Template</a>
 		</div>
 		<ul class="flex flex-row items-center justify-center gap-4 text-sm">

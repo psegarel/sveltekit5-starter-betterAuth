@@ -10,6 +10,8 @@
 	import IconEye from './IconEye.svelte';
 	import IconMail from './IconMail.svelte';
 	import { goto } from '$app/navigation';
+	import { USER_DEPENDENCY_KEY } from '$lib/constants';
+	import { invalidate } from '$app/navigation';
 
 	let { data }: { data: SuperValidated<Infer<AuthSchema>> } = $props();
 	let showPassword = $state(false);
@@ -27,7 +29,10 @@
 				password: $formData.password
 			});
 			if (data) {
-				goto('/');
+				await invalidate(USER_DEPENDENCY_KEY);
+				// Give a small window for the session to be fully established
+				await new Promise((resolve) => setTimeout(resolve, 100));
+				await goto('/');
 			}
 		} catch (error) {
 			console.error(error);
@@ -94,7 +99,7 @@
 			<div class="mt-8 flex flex-row items-center justify-between">
 				<div class="flex flex-row items-center justify-center gap-8">
 					<Form.Button
-						type="button"
+						type="submit"
 						class="transition-all duration-300 active:scale-95 active:bg-zinc-500"
 						onclick={login}>Log In</Form.Button
 					>

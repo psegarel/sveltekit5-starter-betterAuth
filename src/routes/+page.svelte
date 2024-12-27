@@ -1,5 +1,10 @@
 <script lang="ts">
-	import { navbarState } from '$lib/states/index.svelte';
+	import type { PageData } from './$types';
+	import { navbarState, userState } from '$lib/states/index.svelte';
+
+	let { data }: { data: PageData } = $props();
+
+	userState.session = data.user ? true : false;
 
 	$effect.pre(() => {
 		navbarState.visible = true;
