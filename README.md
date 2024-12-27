@@ -31,7 +31,7 @@ SvelteKit 5 with TailwindCSS, Prisma, Shadcn/UI and Better-Auth
 ## Email
 
 I'm using Brevo for the email service, at the time of writing, the free plan allows to send 300 emails per day.
-You may need to change the sendMail function in the src/lib/server/email/index.ts file to use another email service.
+You will need to implement your own sendMail function in the src/lib/server/email/index.ts file to use another email service.
 
 1. Add your email credentials to the .env file
 
