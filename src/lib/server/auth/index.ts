@@ -7,6 +7,7 @@ import { APP_NAME } from '$env/static/private';
 export const auth = betterAuth({
 	emailAndPassword: {
 		enabled: true,
+		requireEmailVerification: true,
 		sendResetPassword: async ({ user, url, token }, request) => {
 			await sendMail({
 				to: user.email,

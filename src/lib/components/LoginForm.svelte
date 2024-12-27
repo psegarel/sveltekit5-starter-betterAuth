@@ -13,6 +13,7 @@
 	import { USER_DEPENDENCY_KEY } from '$lib/constants';
 	import { invalidate } from '$app/navigation';
 	import IconArrowPath from './IconArrowPath.svelte';
+	import { toast } from 'svelte-sonner';
 
 	let { data }: { data: SuperValidated<Infer<AuthSchema>> } = $props();
 	let showPassword = $state(false);
@@ -27,19 +28,37 @@
 	async function login() {
 		try {
 			loggingIn = true;
-			const { data } = await authClient.signIn.email({
-				email: $formData.email,
-				password: $formData.password
-			});
+			const { data } = await authClient.signIn.email(
+				{
+					email: $formData.email,
+					password: $formData.password
+				},
+				{
+					onError: async (ctx) => {
+						// Handle the error
+						if (ctx.error.status === 403) {
+							toast.error('Please verify your email address');
+						} else {
+							toast.error(
+								'An error occurred, please try again making sure your credentials are correct'
+							);
+						}
+						await authClient.sendVerificationEmail({
+							email: $formData.email,
+							callbackURL: '/' // The redirect URL after verification
+						});
+					}
+				}
+			);
 			if (data) {
 				await invalidate(USER_DEPENDENCY_KEY);
+
 				// Give a small window for the session to be fully established
 				await new Promise((resolve) => setTimeout(resolve, 100));
 				await goto('/');
 				loggingIn = false;
 			}
 		} catch (error) {
-			console.error(error);
 			loggingIn = false;
 		}
 	}
