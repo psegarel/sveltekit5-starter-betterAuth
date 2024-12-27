@@ -43,10 +43,7 @@
 								'An error occurred, please try again making sure your credentials are correct'
 							);
 						}
-						await authClient.sendVerificationEmail({
-							email: $formData.email,
-							callbackURL: '/' // The redirect URL after verification
-						});
+						loggingIn = false;
 					}
 				}
 			);
@@ -123,7 +120,6 @@
 			<div class="mt-8 flex flex-row items-center justify-between">
 				<div class="flex flex-row items-center justify-center gap-8">
 					<Form.Button
-						type="submit"
 						class="transition-all duration-300 active:scale-95 active:bg-zinc-500"
 						onclick={login}
 						>{#if loggingIn}

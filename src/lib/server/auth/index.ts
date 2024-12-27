@@ -17,6 +17,7 @@ export const auth = betterAuth({
 		}
 	},
 	emailVerification: {
+		callbackURL: '/login',
 		sendVerificationEmail: async ({ user, url, token }, request) => {
 			await sendMail({
 				to: user.email,

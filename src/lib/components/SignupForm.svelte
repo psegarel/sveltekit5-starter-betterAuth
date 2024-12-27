@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
-
+	import { USER_DEPENDENCY_KEY } from '$lib/constants';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { signupSchema, type SignupSchema } from '$lib/auth/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
@@ -10,6 +10,7 @@
 	import IconEye from './IconEye.svelte';
 	import IconMail from './IconMail.svelte';
 	import IconArrowPath from './IconArrowPath.svelte';
+	import { goto, invalidate } from '$app/navigation';
 
 	let { data }: { data: SuperValidated<Infer<SignupSchema>> } = $props();
 	let showPassword = $state(false);
@@ -21,15 +22,24 @@
 	const { form: formData, enhance } = form;
 
 	async function signup() {
+		signingUp = true;
 		try {
-			signingUp = true;
 			const { data } = await authClient.signUp.email({
 				email: $formData.email,
 				password: $formData.password,
-				name: $formData.name
+				name: $formData.name,
+				callbackURL: '/'
 			});
-			console.log(data);
+
 			signingUp = false;
+			if (data) {
+				await invalidate(USER_DEPENDENCY_KEY);
+
+				// Give a small window for the session to be fully established
+				await new Promise((resolve) => setTimeout(resolve, 100));
+				await goto('/email-verify');
+				signingUp = false;
+			}
 		} catch (error) {
 			console.error(error);
 			signingUp = false;
