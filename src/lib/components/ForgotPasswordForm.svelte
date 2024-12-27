@@ -52,7 +52,7 @@
 								bind:value={$formData.email}
 							/>
 							<span
-								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3 dark:border-zinc-800"
 							>
 								<span class="relative left-1 ml-0.5"
 									><IconMail className="size-5 text-zinc-500" /></span
