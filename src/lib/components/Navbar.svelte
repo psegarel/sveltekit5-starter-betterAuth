@@ -25,8 +25,10 @@
 	<div class="flex w-1/2 flex-row items-center justify-start gap-4 text-sm">
 		<a class="text-xl font-semibold tracking-tight" href="/">Starter Template</a>
 	</div>
-	<div class="flex h-16 flex-row items-center justify-center gap-16">
-		<ul class="flex flex-row items-center justify-center gap-4 text-sm">
+	<div class="flex h-16 flex-row items-center justify-center gap-4">
+		<ul
+			class="flex flex-row items-center justify-end gap-4 border-r border-zinc-400 pr-4 text-sm dark:border-zinc-200"
+		>
 			{#each primaryMenu as item}
 				<li>
 					<a href={item.href}>{item.name}</a>

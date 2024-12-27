@@ -12,7 +12,7 @@
 </script>
 
 {#if !user}
-	<div class="flex flex-row items-center justify-center gap-4 text-sm">
+	<div class="flex flex-row gap-4 border-r border-zinc-400 px-0 pr-4 text-sm dark:border-zinc-200">
 		<a href="/login">Login</a>
 		<a href="/signup">Signup</a>
 	</div>
