@@ -5,6 +5,7 @@
 
 	import UserMenu from './UserMenu.svelte';
 	import type { User } from 'better-auth';
+	import MobileMenu from './MobileMenu.svelte';
 
 	let { user }: { user: User | undefined } = $props();
 	let primaryMenu = [
@@ -18,7 +19,7 @@
 {#if navbarState.visible}
 	<div
 		transition:fly={{ y: -100, duration: 600, delay: 600, easing: cubicOut, opacity: 1 }}
-		class="fixed z-50 flex h-16 w-screen flex-row items-center justify-between px-4 md:px-16"
+		class="fixed z-50 hidden h-16 w-screen items-center justify-between px-4 md:flex md:flex-row md:px-16"
 	>
 		<div class="flex w-1/2 flex-row items-center justify-start gap-4 text-sm">
 			<a class="text-xl font-semibold tracking-tight" href="/">Starter Template</a>
@@ -33,3 +34,5 @@
 		<UserMenu {user} />
 	</div>
 {/if}
+
+<MobileMenu menu={primaryMenu} />
