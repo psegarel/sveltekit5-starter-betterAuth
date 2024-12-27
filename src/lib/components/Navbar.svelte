@@ -1,7 +1,4 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
-
 	import UserMenu from './UserMenu.svelte';
 	import type { User } from 'better-auth';
 	import MobileMenu from './MobileMenu.svelte';
@@ -19,19 +16,16 @@
 </script>
 
 <div
-	transition:fly={{ y: -100, duration: 600, delay: 600, easing: cubicOut, opacity: 1 }}
 	class="fixed z-50 hidden h-16 w-screen items-center justify-between bg-transparent px-4 md:flex md:flex-row md:px-16"
 >
 	<div class="flex w-1/2 flex-row items-center justify-start gap-4 text-sm">
 		<a class="text-xl font-semibold tracking-tight" href="/">Starter Template</a>
 	</div>
-	<div class="flex h-16 flex-row items-center justify-center gap-4">
-		<ul
-			class="flex flex-row items-center justify-end gap-4 border-r border-zinc-400 pr-4 text-sm dark:border-zinc-200"
-		>
+	<div class="flex h-16 flex-row items-center justify-center gap-8">
+		<ul class="flex flex-row items-center justify-end gap-4 pr-4 text-sm">
 			{#each primaryMenu as item}
 				<li>
-					<a href={item.href}>{item.name}</a>
+					<a class="text-base font-light uppercase" href={item.href}>{item.name}</a>
 				</li>
 			{/each}
 		</ul>
