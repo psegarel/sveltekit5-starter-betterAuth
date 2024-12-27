@@ -12,9 +12,11 @@
 	import { goto } from '$app/navigation';
 	import { USER_DEPENDENCY_KEY } from '$lib/constants';
 	import { invalidate } from '$app/navigation';
+	import IconArrowPath from './IconArrowPath.svelte';
 
 	let { data }: { data: SuperValidated<Infer<AuthSchema>> } = $props();
 	let showPassword = $state(false);
+	let loggingIn = $state(false);
 
 	const form = superForm(data, {
 		validators: zodClient(authSchema)
@@ -24,6 +26,7 @@
 
 	async function login() {
 		try {
+			loggingIn = true;
 			const { data } = await authClient.signIn.email({
 				email: $formData.email,
 				password: $formData.password
@@ -33,9 +36,11 @@
 				// Give a small window for the session to be fully established
 				await new Promise((resolve) => setTimeout(resolve, 100));
 				await goto('/');
+				loggingIn = false;
 			}
 		} catch (error) {
 			console.error(error);
+			loggingIn = false;
 		}
 	}
 </script>
@@ -59,7 +64,7 @@
 								bind:value={$formData.email}
 							/>
 							<span
-								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3 dark:border-zinc-800"
 							>
 								<span class="relative left-1 ml-0.5"
 									><IconMail className="size-5 text-zinc-500" /></span
@@ -85,7 +90,7 @@
 								type="button"
 								tabindex="-1"
 								onclick={() => (showPassword = !showPassword)}
-								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3 dark:border-zinc-800"
 							>
 								<span class="relative left-1 ml-0.5"
 									><IconEye className="size-5 text-zinc-500" show={showPassword} /></span
@@ -101,8 +106,13 @@
 					<Form.Button
 						type="submit"
 						class="transition-all duration-300 active:scale-95 active:bg-zinc-500"
-						onclick={login}>Log In</Form.Button
-					>
+						onclick={login}
+						>{#if loggingIn}
+							<IconArrowPath size="size-4" />
+						{:else}
+							Log In
+						{/if}
+					</Form.Button>
 					<a href="/forgot-password" class="text-sm underline">Forgot Password</a>
 				</div>
 

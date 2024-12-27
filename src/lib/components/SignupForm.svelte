@@ -9,10 +9,11 @@
 	import { authClient } from '$lib/auth/client';
 	import IconEye from './IconEye.svelte';
 	import IconMail from './IconMail.svelte';
+	import IconArrowPath from './IconArrowPath.svelte';
 
 	let { data }: { data: SuperValidated<Infer<SignupSchema>> } = $props();
 	let showPassword = $state(false);
-
+	let signingUp = $state(false);
 	const form = superForm(data, {
 		validators: zodClient(signupSchema)
 	});
@@ -21,14 +22,17 @@
 
 	async function signup() {
 		try {
+			signingUp = true;
 			const { data } = await authClient.signUp.email({
 				email: $formData.email,
 				password: $formData.password,
 				name: $formData.name
 			});
 			console.log(data);
+			signingUp = false;
 		} catch (error) {
 			console.error(error);
+			signingUp = false;
 		}
 	}
 </script>
@@ -62,7 +66,7 @@
 								bind:value={$formData.email}
 							/>
 							<span
-								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3 dark:border-zinc-800"
 							>
 								<span class="relative left-1 ml-0.5"
 									><IconMail className="size-5 text-zinc-500" /></span
@@ -89,7 +93,7 @@
 								type="button"
 								tabindex="-1"
 								onclick={() => (showPassword = !showPassword)}
-								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3 dark:border-zinc-800"
 							>
 								<span class="relative left-1 ml-0.5"
 									><IconEye className="size-5 text-zinc-500" show={showPassword} /></span
@@ -116,7 +120,7 @@
 								type="button"
 								tabindex="-1"
 								onclick={() => (showPassword = !showPassword)}
-								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3"
+								class="absolute inset-y-0 left-0 flex flex-col items-center justify-center rounded-l border border-zinc-200 pr-3 dark:border-zinc-800"
 							>
 								<span class="relative left-1 ml-0.5"
 									><IconEye className="size-5 text-zinc-500" show={showPassword} /></span
@@ -130,8 +134,14 @@
 			<div class="mt-8 flex flex-row items-center justify-between">
 				<Form.Button
 					class="transition-all duration-300 active:scale-95 active:bg-zinc-500"
-					onclick={signup}>Submit</Form.Button
+					onclick={signup}
 				>
+					{#if signingUp}
+						<IconArrowPath size="size-4" />
+					{:else}
+						Sign Up
+					{/if}
+				</Form.Button>
 				<div class="text-center text-xs">
 					Already have an account?
 					<a href="/login" class="underline"> <span class="text-sm font-bold">Log In</span> </a>
