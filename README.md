@@ -1,9 +1,22 @@
-# Starter Template
+# 🛠️ SvelteKit 5 Starter Template
 
-SvelteKit 5 with TailwindCSS, Prisma, Shadcn/UI and Better-Auth.
+I got tired of setting up the same tools over and over, so I build this template, planning to use it as a base for my upcoming projects. Hopefully it'll make life easier for anyone starting a new SvelteKit project.
 
-Trying not to repeat myself, that's why I came up with this template with the idea of adding most of the features I use in my projects.
-From Authentication to SEO ( not there yet), mail functionality, dark mode, etc.
+It bundles together some of my favorite tools:
+
+- SvelteKit 5
+- TailwindCSS
+- Prisma & Prisma Postgres ( Prisma Postgres offers a free plan, no cold starts! )
+- Shadcn/UI
+- Better-Auth (because who wants to build auth from scratch?)
+
+Right now it has authentication working, user signup with email verification, login & logout with the necesssary email features using Brevo ( Free Plan offers 300 daily emails at the time of writing). Better Auth offers a lot more of course but this template should get you going.
+
+I'm planning to add SEO stuff soon too!
+
+I'm still improving this template, and I hope it helps others skip the setup part and get straight to building cool stuff. Feel free to use it, break it, or make it better!
+
+If this sounds useful, feel free to check it out and let me know what you think. Always happy to get feedback or suggestions!
 
 ## Setup
 
