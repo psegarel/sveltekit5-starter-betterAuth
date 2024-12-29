@@ -28,7 +28,7 @@
 				email: $formData.email,
 				password: $formData.password,
 				name: $formData.name,
-				callbackURL: '/'
+				callbackURL: '/email-verified'
 			});
 
 			signingUp = false;
