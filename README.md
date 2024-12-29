@@ -1,27 +1,27 @@
 # 🛠️ SvelteKit 5 Starter Template
 
-I got tired of setting up the same tools over and over, so I build this template, planning to use it as a base for my upcoming projects. Hopefully it'll make life easier for anyone starting a new SvelteKit project.
+I got tired of setting up the same tools over and over, so I started to build this template, planning to use it as a base for my upcoming projects. Hopefully it'll make life easier for anyone starting a new SvelteKit project.
 
 It bundles together some of my favorite tools:
 
 - SvelteKit 5
 - TailwindCSS
-- Prisma & Prisma Postgres ( Prisma Postgres offers a free plan, no cold starts! )
+- Prisma & Prisma Postgres ( Prisma Postgres offers a free plan, no cold starts! But feel free to use any other Prisma compatible database )
 - Shadcn/UI
-- Better-Auth (because who wants to build auth from scratch?)
+- Better-Auth, at the time of writing my favorite auth option for SvelteKit
 
 Right now it has authentication working, user signup with email verification, login & logout with the necesssary email features using Brevo ( Free Plan offers 300 daily emails at the time of writing). Better Auth offers a lot more of course but this template should get you going.
 
 I'm planning to add SEO stuff soon too!
 
-I'm still improving this template, and I hope it helps others skip the setup part and get straight to building cool stuff. Feel free to use it, break it, or make it better!
+I'm still improving this template, and I hope it helps others skip the setup part and get straight to building cool stuff. Use it, break it, or make it better!
 
 If this sounds useful, feel free to check it out and let me know what you think. Always happy to get feedback or suggestions!
 
 ## Setup
 
 1. Clone the repository
-2. Run `pnpm install`
+2. Run `pnpm install` ( or your package manager of choice...)
 3. Run `pnpm dev --open`
 
 ## Database
