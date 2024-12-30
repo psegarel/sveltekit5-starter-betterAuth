@@ -22,13 +22,18 @@ If this sounds useful, feel free to check it out and let me know what you think.
 
 1. Clone the repository
 2. Run `pnpm install` ( or your package manager of choice...)
-3. Run `pnpm dev --open`
 
 ## Database
 
 (PostgreSQL, if you want to use another database, you need to change the adapter in the prisma/schema.prisma file)
 
 1. Add your database url to the .env file
+2. Initialize your database & generate the Prisma Client
+
+```
+   pnpx prisma migrate dev --name init
+   pnpx prisma generate
+```
 
 ## Authentication
 
@@ -62,3 +67,9 @@ VITE_SMTP_FROM_EMAIL=
 ## Mode Watcher
 
 1. Added the ModeWatcher component to the src/routes/+layout.svelte file, to enable the dark mode.
+
+## Finally
+
+```
+   pnpm dev --open
+```
