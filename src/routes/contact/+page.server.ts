@@ -1,6 +1,9 @@
+import { sendMail, type EmailPayload } from '$lib/server/email';
+import type { Actions } from './$types';
+
 import type { PageServerLoad } from './$types';
 import { contactFormSchema } from './contact-form-schema';
-import { superValidate } from 'sveltekit-superforms';
+import { fail, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load = (async () => {
@@ -11,6 +14,27 @@ export const load = (async () => {
 
 export const actions = {
 	default: async ({ request }) => {
-		// Nothing happens here, login is handled in the client, but the login button is a submit button, so we need to handle it here to avoid any errors
+		const data = await request.formData();
+		// Validation should have been handled by zod, but you could add more validation steps here if needed.
+
+		if (!data.get('message') && !data.get('email')) {
+			return fail;
+		}
+
+		let payload: EmailPayload = {
+			subject: String(data.get('subject')),
+
+			// Alternatively, you can create a new environment variable, if you wish to receive mail on a different account
+			// For instance VITE_SMTP_TO_EMAIL=your-receiving-email@example.com
+			to: import.meta.env.VITE_SMTP_FROM_EMAIL,
+
+			// Feel free to format th email any way you wish
+			html: `<p>${String(data.get('message'))}</p><p>Email sent by ${String(data.get('name'))}, email: ${String(data.get('email'))}</p>`
+		};
+
+		const message = await sendMail(payload);
+		if (message) {
+			return { success: true };
+		}
 	}
-};
+} satisfies Actions;

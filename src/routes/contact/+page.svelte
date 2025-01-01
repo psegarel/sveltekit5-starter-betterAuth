@@ -1,8 +1,9 @@
 <script lang="ts">
+	import type { ActionData } from '../$types';
 	import type { PageData } from './$types';
 	import ContactForm from './ContactForm.svelte';
 
-	let { data }: { data: PageData } = $props();
+	let { data, form }: { data: PageData; form: ActionData } = $props();
 </script>
 
 <div class="grid h-screen w-screen grid-cols-1 items-center justify-center md:grid-cols-2">

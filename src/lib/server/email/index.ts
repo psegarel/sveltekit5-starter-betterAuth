@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import type { SendMailOptions } from 'nodemailer';
 
-interface EmailPayload {
+export interface EmailPayload {
 	to: string | string[];
 	from?: string; // Will default to VITE_SMTP_FROM_EMAIL if not provided
 	subject: string;

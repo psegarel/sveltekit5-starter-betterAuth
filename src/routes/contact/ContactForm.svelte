@@ -7,11 +7,21 @@
 	import { contactFormSchema, type ContactFormSchema } from './contact-form-schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { toast } from 'svelte-sonner';
 
 	let { data }: { data: SuperValidated<Infer<ContactFormSchema>> } = $props();
+	let successMessage = 'Thanks for getting in touch, we will get back to you shortly';
+	let errorMessage = 'Hmmm, not sure what went wrong here, please try again later...';
 
 	const form = superForm(data, {
-		validators: zodClient(contactFormSchema)
+		validators: zodClient(contactFormSchema),
+		onResult: ({ result }) => {
+			if (result.type == 'success') {
+				toast(successMessage);
+			} else {
+				toast(errorMessage);
+			}
+		}
 	});
 	const { form: formData, enhance } = form;
 </script>
