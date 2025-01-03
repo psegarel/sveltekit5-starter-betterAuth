@@ -10,6 +10,7 @@
 	import IconEye from './IconEye.svelte';
 	import IconArrowPath from './IconArrowPath.svelte';
 	import { toast } from 'svelte-sonner';
+	import { goto } from '$app/navigation';
 
 	let { data }: { data: SuperValidated<Infer<ResetPasswordSchema>> } = $props();
 	let showPassword = $state(false);
@@ -22,12 +23,20 @@
 	const { form: formData, enhance } = form;
 
 	async function resetPassword() {
+		resetting = true;
 		try {
 			const { data, error } = await authClient.resetPassword({
 				newPassword: $formData.password
 			});
+
+			if (data) {
+				resetting = false;
+				await goto('/login');
+				toast.success('Your password was successfully reset, please log in!');
+			}
 		} catch (error) {
 			console.log(error);
+			toast.error('There was an error, please try again later');
 		}
 	}
 </script>

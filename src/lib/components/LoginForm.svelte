@@ -52,7 +52,7 @@
 
 				// Give a small window for the session to be fully established
 				await new Promise((resolve) => setTimeout(resolve, 100));
-				await goto('/');
+				await goto('/admin');
 				loggingIn = false;
 			}
 		} catch (error) {
