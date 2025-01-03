@@ -4,6 +4,10 @@ export const forgotPasswordSchema = z.object({
 	email: z.string().email()
 });
 
+export const resetPasswordSchema = z.object({
+	password: z.string().min(8).max(50)
+});
+
 export const signupSchema = z
 	.object({
 		email: z.string().email(),
@@ -40,3 +44,4 @@ export const authSchema = z
 export type SignupSchema = typeof signupSchema;
 export type AuthSchema = typeof authSchema;
 export type ForgotPasswordSchema = typeof forgotPasswordSchema;
+export type ResetPasswordSchema = typeof resetPasswordSchema;
