@@ -12,8 +12,6 @@ It bundles together some of my favorite tools:
 
 Right now it has authentication working, user signup with email verification, login & logout with the necesssary email features using Brevo ( Free Plan offers 300 daily emails at the time of writing). Better Auth offers a lot more of course but this template should get you going.
 
-I'm planning to add SEO stuff soon too!
-
 I'm still improving this template, and I hope it helps others skip the setup part and get straight to building cool stuff. Use it, break it, or make it better!
 
 If this sounds useful, feel free to check it out and let me know what you think. Always happy to get feedback or suggestions!
