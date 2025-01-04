@@ -72,3 +72,13 @@ model Verification {
 
   @@map("verification")
 }
+
+model SeoData {
+  id          String @id @default(cuid())
+  title       String
+  imageUrl    String
+  description String
+  reference   String
+
+  @@map("seoData")
+}

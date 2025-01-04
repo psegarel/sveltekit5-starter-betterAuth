@@ -68,6 +68,11 @@ VITE_SMTP_FROM_EMAIL=
 
 1. Added the ModeWatcher component to the src/routes/+layout.svelte file, to enable the dark mode.
 
+## Metatags
+
+See usage in +page.server.ts & +page.svelte.
+Basic usage would be to save the SeoData for each routes in the database, then retrieve it in each route +page.server.ts, then add the Metatags component in each route that returns data.seo
+
 ## Finally
 
 ```
