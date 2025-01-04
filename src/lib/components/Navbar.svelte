@@ -23,7 +23,10 @@
 	class="fixed z-50 hidden h-16 w-screen items-center justify-between bg-transparent px-4 md:flex md:flex-row md:px-16"
 >
 	<div class="flex w-1/2 flex-row items-center justify-start gap-4 text-sm">
-		<a class="text-xl font-semibold tracking-tight" href="/">Starter Template</a>
+		<a
+			class="rounded-md bg-white px-4 py-1 text-xl font-semibold tracking-tight dark:bg-zinc-900 dark:text-zinc-300"
+			href="/">Starter Template</a
+		>
 	</div>
 	<div class="flex h-16 flex-row items-center justify-center gap-8">
 		<ul class="flex flex-row items-center justify-end gap-4 pr-4 text-sm">
