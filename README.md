@@ -55,11 +55,11 @@ You will need to implement your own sendMail function in the src/lib/server/emai
 1. Add your email credentials to the .env file
 
 ```
-VITE_SMTP_HOST=
-VITE_SMTP_PORT=
-VITE_SMTP_USER=
-VITE_SMTP_KEY=
-VITE_SMTP_FROM_EMAIL=
+BREVO_SMTP_HOST=
+BREVO_SMTP_PORT=
+BREVO_SMTP_USER=
+BREVO_SMTP_KEY=
+BREVO_SMTP_FROM_EMAIL=
 ```
 
 ## Mode Watcher
