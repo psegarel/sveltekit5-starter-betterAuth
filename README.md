@@ -52,7 +52,7 @@ If this sounds useful, feel free to check it out and let me know what you think.
 I'm using Brevo for the email service.
 You will need to implement your own sendMail function in the src/lib/server/email/index.ts file to use another email service.
 
-1. Add your email credentials to the .env file
+2. Add your email credentials to the .env file
 
 ```
 BREVO_SMTP_HOST=
@@ -62,9 +62,14 @@ BREVO_SMTP_KEY=
 BREVO_SMTP_FROM_EMAIL=
 ```
 
-## Mode Watcher
+3. Add your app name
 
-1. Added the ModeWatcher component to the src/routes/+layout.svelte file, to enable the dark mode.
+```
+APP_NAME="Starter Auth Template"
+```
+
+## Mode Watcher
+4. Added the ModeWatcher component to the src/routes/+layout.svelte file, to enable the dark mode.
 
 ## Metatags
 
