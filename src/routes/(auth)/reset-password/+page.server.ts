@@ -1,11 +1,11 @@
 import type { PageServerLoad } from './$types';
 import { superValidate } from 'sveltekit-superforms';
-import { zod } from 'sveltekit-superforms/adapters';
+import { zod4 } from 'sveltekit-superforms/adapters';
 import { resetPasswordSchema } from '$lib/auth/schema';
 
 export const load = (async () => {
 	return {
-		form: await superValidate(zod(resetPasswordSchema))
+		form: await superValidate(zod4(resetPasswordSchema))
 	};
 }) satisfies PageServerLoad;
 

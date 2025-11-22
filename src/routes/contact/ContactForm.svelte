@@ -6,7 +6,7 @@
 
 	import { contactFormSchema, type ContactFormSchema } from './contact-form-schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { toast } from 'svelte-sonner';
 
 	let { data }: { data: SuperValidated<Infer<ContactFormSchema>> } = $props();
@@ -14,7 +14,7 @@
 	let errorMessage = 'Hmmm, not sure what went wrong here, please try again later...';
 
 	const form = superForm(data, {
-		validators: zodClient(contactFormSchema),
+		validators: zod4Client(contactFormSchema),
 		onResult: ({ result }) => {
 			if (result.type == 'success') {
 				toast(successMessage);

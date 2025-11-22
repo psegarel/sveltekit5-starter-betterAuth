@@ -4,12 +4,12 @@ import type { Actions } from './$types';
 import type { PageServerLoad } from './$types';
 import { contactFormSchema } from './contact-form-schema';
 import { fail, superValidate } from 'sveltekit-superforms';
-import { zod } from 'sveltekit-superforms/adapters';
+import { zod4 } from 'sveltekit-superforms/adapters';
 import { BREVO_SMTP_FROM_EMAIL } from '$env/static/private';
 
 export const load = (async () => {
 	return {
-		form: await superValidate(zod(contactFormSchema))
+		form: await superValidate(zod4(contactFormSchema))
 	};
 }) satisfies PageServerLoad;
 

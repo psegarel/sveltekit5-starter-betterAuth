@@ -1,8 +1,8 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 export const contactFormSchema = z.object({
 	name: z.string().min(2).max(50),
-	email: z.string().email(),
+	email: z.email(),
 	subject: z.string().min(2).max(50),
 	message: z.string()
 });

@@ -5,7 +5,7 @@
 
 	import { authSchema, type AuthSchema } from '$lib/auth/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { authClient } from '$lib/auth/client';
 	import IconEye from './IconEye.svelte';
 	import IconMail from './IconMail.svelte';
@@ -20,7 +20,7 @@
 	let loggingIn = $state(false);
 
 	const form = superForm(data, {
-		validators: zodClient(authSchema)
+		validators: zod4Client(authSchema)
 	});
 
 	const { form: formData, enhance } = form;

@@ -4,7 +4,7 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { forgotPasswordSchema, type ForgotPasswordSchema } from '$lib/auth/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { authClient } from '$lib/auth/client';
 	import { toast } from 'svelte-sonner';
 
@@ -13,7 +13,7 @@
 	let { data }: { data: SuperValidated<Infer<ForgotPasswordSchema>> } = $props();
 
 	const form = superForm(data, {
-		validators: zodClient(forgotPasswordSchema)
+		validators: zod4Client(forgotPasswordSchema)
 	});
 	const { form: formData, enhance, errors } = form;
 

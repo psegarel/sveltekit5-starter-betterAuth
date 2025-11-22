@@ -5,7 +5,7 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { signupSchema, type SignupSchema } from '$lib/auth/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { authClient } from '$lib/auth/client';
 	import IconEye from './IconEye.svelte';
 	import IconMail from './IconMail.svelte';
@@ -16,7 +16,7 @@
 	let showPassword = $state(false);
 	let signingUp = $state(false);
 	const form = superForm(data, {
-		validators: zodClient(signupSchema)
+		validators: zod4Client(signupSchema)
 	});
 
 	const { form: formData, enhance } = form;

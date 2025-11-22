@@ -5,7 +5,7 @@
 
 	import { resetPasswordSchema, type ResetPasswordSchema } from '$lib/auth/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { authClient } from '$lib/auth/client';
 	import IconEye from './IconEye.svelte';
 	import IconArrowPath from './IconArrowPath.svelte';
@@ -17,7 +17,7 @@
 	let resetting = $state(false);
 
 	const form = superForm(data, {
-		validators: zodClient(resetPasswordSchema)
+		validators: zod4Client(resetPasswordSchema)
 	});
 
 	const { form: formData, enhance } = form;
