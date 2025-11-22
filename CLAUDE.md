@@ -20,9 +20,9 @@ pnpm lint                   # Run prettier + eslint
 pnpm format                 # Auto-format code
 
 # Database
-pnpx prisma migrate dev     # Run migrations
-pnpx prisma generate        # Generate Prisma client
-pnpx prisma studio          # Open Prisma Studio GUI
+pnpm prisma migrate dev     # Run migrations
+pnpm prisma generate        # Generate Prisma client
+pnpm prisma studio          # Open Prisma Studio GUI
 ```
 
 ## Architecture

@@ -30,8 +30,8 @@ If this sounds useful, feel free to check it out and let me know what you think.
 2. Initialize your database & generate the Prisma Client
 
 ```
-   pnpx prisma migrate dev --name init
-   pnpx prisma generate
+   pnpm prisma migrate dev --name init
+   pnpm prisma generate
 ```
 
 ## Authentication
