@@ -9,7 +9,7 @@ It bundles together some of my favorite tools:
 - Prisma & Prisma Postgres ( Prisma Postgres offers a free plan, no cold starts! But feel free to use any other Prisma compatible database )
 - Shadcn/UI
 - Better-Auth, at the time of writing my favorite auth option for SvelteKit
-- zod version 3, need to update to version 4 but there are breaking changes
+- zod version 4
 
 Right now it has authentication working, user signup with email verification, login & logout with the necesssary email features using Brevo ( Free Plan offers 300 daily emails at the time of writing). Better Auth offers a lot more of course but this template should get you going.
 
@@ -70,6 +70,7 @@ APP_NAME="Starter Auth Template"
 ```
 
 ## Mode Watcher
+
 4. Added the ModeWatcher component to the src/routes/+layout.svelte file, to enable the dark mode.
 
 ## Metatags
